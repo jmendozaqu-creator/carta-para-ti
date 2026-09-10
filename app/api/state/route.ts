@@ -1,0 +1,2 @@
+import {NextResponse,sync,seconds} from '../../../../lib/api';
+export async function GET(){const s=await sync();return NextResponse.json({started:!!s?.started_at,status:s?.status||'sealed',progress:s?.progress||0,secondsLeft:seconds(s),wantsSecond:!!s?.wants_second});}

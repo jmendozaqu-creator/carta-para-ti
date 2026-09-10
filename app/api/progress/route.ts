@@ -1,0 +1,2 @@
+import {NextResponse,sync,patchState} from '../../../../lib/api';
+export async function POST(req:Request){const s=await sync();if(!['reading','paused'].includes(s?.status))return NextResponse.json({ok:false},{status:409});const b=await req.json();await patchState({progress:Math.max(0,Math.floor(Number(b.progress)||0)),status:'reading'});return NextResponse.json({ok:true});}
