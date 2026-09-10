@@ -1,2 +1,2 @@
-import {NextResponse,sync,seconds,patchState} from '../../../../lib/api';
+import {NextResponse,sync,seconds,patchState} from '../../../lib/api';
 export async function POST(){let s=await sync();if(['destroyed','expired','finished'].includes(s?.status))return NextResponse.json({status:s.status,secondsLeft:seconds(s),progress:s.progress||0});if(!s?.started_at)s=await patchState({started_at:new Date().toISOString(),status:'reading'});return NextResponse.json({status:s.status,secondsLeft:seconds(s),progress:s.progress||0});}

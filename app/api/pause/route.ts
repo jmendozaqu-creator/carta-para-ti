@@ -1,2 +1,2 @@
-import {NextResponse,sync,patchState} from '../../../../lib/api';
+import {NextResponse,sync,patchState} from '../../../lib/api';
 export async function POST(){const s=await sync();if(['reading','paused'].includes(s?.status))await patchState({status:'paused'});return NextResponse.json({ok:true});}
